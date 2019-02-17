@@ -21,5 +21,5 @@ Step 6/6 : CMD DEBUG="http,express-tests:*" PORT=4242 npm start
 [...]
 Successfully tagged express-tests:latest
 
-$ docker run -p 127.0.0.1:4242:4242 -d express-tests
+$ docker run -p 127.0.0.1:4242:4242 --rm --name express-tests express-tests 
 ```

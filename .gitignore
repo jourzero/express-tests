@@ -62,3 +62,9 @@ typings/
 
 # My additions
 old
+docker-run.sh
+docker-stop.sh
+express.sh
+Initial.md
+.vscode
+package-lock.json
