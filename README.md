@@ -23,3 +23,6 @@ Successfully tagged express-tests:latest
 
 $ docker run -p 127.0.0.1:4242:4242 --rm --name express-tests express-tests 
 ```
+
+## Snyk Results
+[![Known Vulnerabilities](https://snyk.io/test/github/jourzero/express-tests/badge.svg)](https://snyk.io/test/github/jourzero/express-tests)

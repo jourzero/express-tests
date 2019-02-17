@@ -1,25 +1,20 @@
 "use strict";
-const createError = require("http-errors");
-const express = require("express");
-const path = require("path");
-const cookieParser = require("cookie-parser");
-const reqLogger = require("./lib/reqLogger.js");
-//const morgan = require("morgan");
-const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
+const createError = require("http-errors"),
+    express = require("express"),
+    path = require("path"),
+    cookieParser = require("cookie-parser"),
+    reqLogger = require("./lib/reqLogger.js"),
+    indexRouter = require("./routes/index"),
+    usersRouter = require("./routes/users"),
+    logger = require("./lib/appLogger.js"),
+    format = require("util").format,
+    config = require("./config.js");
 const app = express();
 
-// Get Loggers
-//const appLogger  = require('./lib/appLogger.js');
-//const logger     = appLogger.loggers.get('local-logger');
-//const siemLogger = appLogger.loggers.get('siem-logger');
-const logger = require("./lib/appLogger.js");
-
-logger.info("App starting...");
-//siemLogger.info('Logging to SIEM');
+// Get Logger
+logger.info(format("App %s is starting...", config.appName));
 
 // Use my request logger
-//app.use(morgan('combined'));
 app.use(reqLogger);
 
 // view engine setup
@@ -49,9 +44,9 @@ app.use(function(err, req, res, next) {
     res.locals.message = err.message;
     res.locals.error = req.app.get("env") === "development" ? err : {};
     logger.error(
-        `GENERAL ERROR! URL:${req.originalUrl}|ERROR:${
+        `GENERAL ERROR! URL:${req.originalUrl}\nERROR:${
             err.message
-        }|STACK:${err.stack}`
+        }\nSTACK:${err.stack}`
     );
 
     // render the error page
