@@ -1,11 +1,14 @@
-"use strict";
+//"use strict"; // Uncomment after running my security testing
 const createError = require("http-errors"),
     express = require("express"),
+    fs = require("fs"),
+    hbs = require("hbs"),
     path = require("path"),
     cookieParser = require("cookie-parser"),
     reqLogger = require("./lib/reqLogger.js"),
     indexRouter = require("./routes/index"),
     usersRouter = require("./routes/users"),
+    test1Router = require("./routes/test1"),
     logger = require("./lib/appLogger.js"),
     format = require("util").format,
     config = require("./config.js");
@@ -14,12 +17,21 @@ const app = express();
 // Get Logger
 logger.info(format("App %s is starting...", config.appName));
 
+/*
+// Create logs directory
+fs.mkdirSync(path.join(__dirname, 'logs'), (err, folder) => {
+  if (err) throw err;
+  console.log("Created folder", folder);
+});
+*/
+
 // Use my request logger
 app.use(reqLogger);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
+hbs.registerPartials(path.join(__dirname, "views/partials"));
 
 //app.use(logger('dev'));
 app.use(express.json());
@@ -29,6 +41,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/test1", test1Router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

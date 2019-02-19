@@ -1,3 +1,46 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 <p>This app's source code is located <a href="{{repoUrl}}" target="repowin">here</a>.</p>
+
+<h2>Tests</h2>
+
+<h3>Prototype Pollution Attack</h3>
+<table>
+    <tr>
+        <td>Tests</td>
+        <td>
+            <ol>
+                <li><a href="/test1">POC1: Prototype Pollution Attack leading to remote code exec (RCE)</a></li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <td>Issues References</td>
+        <td>
+            <a href="https://www.npmjs.com/advisories/755">Handlebars Prototype Pollution on npmjs.com</a> <br />
+            <a
+                href="https://github.com/wycats/handlebars.js/blob/7372d4e9dffc9d70c09671aa28b9392a1577fd86/spec/security.js">Handlebars
+                Prototype Pollution Test Case</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Attack POCs</td>
+        <td>
+            <a href="https://github.com/wycats/handlebars.js/issues/1267">POC1</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Code Fixes</td>
+        <td>
+            <a href="https://github.com/wycats/handlebars.js/commit/7372d4e9dffc9d70c09671aa28b9392a1577fd86"></a>
+        </td>
+    </tr>
+    <tr>
+        <td>Handlebars References</td>
+        <td>
+            <a href="https://handlebarsjs.com/reference.html">General</a><br />
+            <a href="http://handlebarsjs.com/block_helpers.html">Block Helpers</a><br />
+            <a href="http://tryhandlebarsjs.com">Tester</a>
+        </td>
+    </tr>
+</table>
