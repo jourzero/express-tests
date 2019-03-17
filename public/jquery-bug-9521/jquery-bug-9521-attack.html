@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Jquery XSS</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.4.2.min.js"></script>
+<!--
+Versions tested for successful attack:
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.4.2.min.js"></script>
+
+Versions tested for unsuccessful attack:
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+-->
+</head>
+<body>
+<div>
+	Attack tester for <a href="https://bugs.jquery.com/ticket/9521">jquery bug #9521</a>.
+	The vulnerable code is invisible javascript.
+	Try an attack via DOM XSS, by adding XSS payloads in the address bar.
+</div>
+<br/>
+
+<div>
+<div id="1">This is a test div tag (id="1")</div> <br/>
+<div id="2">This is a test div tag (id="2")</div> <br/>
+<script>
+  setTimeout(() => $(decodeURI(location.hash)).css("font-weight","Bold"), 2000) 
+</script>
+</div>
+
+
+
+<div class="footer">
+<hr/>
+<small>See also: <a href="http://research.insecurelabs.org/jquery/test/">jquery vuln tester</a> from Insecure Labs.</small>
+</div>
+</body>
+</html>

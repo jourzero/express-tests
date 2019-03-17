@@ -67,3 +67,4 @@ docker-stop.sh
 express.sh
 Initial.md
 package-lock.json
+.DS_Store
