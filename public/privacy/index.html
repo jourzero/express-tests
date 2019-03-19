@@ -18,13 +18,13 @@
                 tld = h[h.length-2] + "." + h[h.length-1];
             }
             document.cookie = "__noPath="      + now;
-            document.cookie = "__rootPath="    + now + ";path=/;secure";
+            document.cookie = "__rootPath="    + now + ";path=/;";
             document.cookie = "__thisDomain="  + now + ";domain="  + host;
             document.cookie = "__tld="         + now + ";domain="  + tld;
-            document.cookie = "__max_aged_1h=" + now + ";max-age=3600;secure";
+            document.cookie = "__max_aged_1h=" + now + ";max-age=3600;";
             document.cookie = "__expires=" + now + ";expires=" + tomorrow.toGMTString();
-            document.cookie = "__samesite_strict=" + now + ";samesite=strict;secure";
-            document.cookie = "__samesite_lax=" + now + ";samesite=lax;secure";
+            document.cookie = "__samesite_strict=" + now + ";samesite=strict;";
+            document.cookie = "__samesite_lax=" + now + ";samesite=lax;";
         }
         function getCookies() {
             var text = "";

@@ -83,7 +83,7 @@ app.use((err, req, res, next) => {
     res.status(500).send("INTERNAL SERVER ERROR");
 });
 
-app.listen(8080, () => {
-    logger.info("Ready at http://localhost:8080");
+app.listen(4242, () => {
+    logger.info("Ready at http://localhost:4242");
 });
 */
