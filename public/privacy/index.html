@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <title>
+            Browser Tests
+        </title>
+    </head>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+
+    <script>
+        function setCookies() {
+            let today = new Date();
+            let tomorrow = new Date(); tomorrow.setDate(today.getDate()+1);
+            let now = today.toISOString();
+            let host = document.location.host;
+            let tld  = host;
+            let h = host.split(".");
+            if (h.length>2){
+                tld = h[h.length-2] + "." + h[h.length-1];
+            }
+            document.cookie = "__noPath="      + now;
+            document.cookie = "__rootPath="    + now + ";path=/;secure";
+            document.cookie = "__thisDomain="  + now + ";domain="  + host;
+            document.cookie = "__tld="         + now + ";domain="  + tld;
+            document.cookie = "__max_aged_1h=" + now + ";max-age=3600;secure";
+            document.cookie = "__expires=" + now + ";expires=" + tomorrow.toGMTString();
+            document.cookie = "__samesite_strict=" + now + ";samesite=strict;secure";
+            document.cookie = "__samesite_lax=" + now + ";samesite=lax;secure";
+        }
+        function getCookies() {
+            var text = "";
+            if (navigator.cookieEnabled == true) {
+                text = document.cookie;
+            } else {
+                text = "(cookies are not enabled)";
+            }
+            return text;
+        }
+
+        function getNavigatorText(obj, spaces) {
+            let navText = "";
+            for (var property in obj) {
+                var val = obj[property];
+                var valType = typeof val;
+                switch (valType) {
+                    case "string":
+                    case "boolean":
+                    case "number":
+                    case "function":
+                        navText +=
+                            spaces +
+                            property +
+                            ": &nbsp;(" +
+                            valType +
+                            ")&nbsp;<em>" +
+                            val +
+                            "</em><br />";
+                        break;
+                    case "object":
+                        navText +=
+                            spaces +
+                            property +
+                            ": &nbsp;(" +
+                            valType +
+                            ")&nbsp;<em>" +
+                            val +
+                            "</em><br />";
+                        if (spaces.length > 240) continue;
+                        navText += getNavigatorText(
+                            val,
+                            spaces + "&nbsp;&nbsp;&nbsp;&nbsp;"
+                        );
+                        break;
+                }
+            }
+            return navText;
+        }
+
+        function showBrowserData() {
+            $("#location").html(JSON.stringify(location));
+            let navText = getNavigatorText(navigator, "");
+            $("#navigator").html(navText);
+            setCookies();
+            $("#cookies").html(getCookies());
+        }
+    </script>
+
+    <body onload="showBrowserData()">
+        <div>
+            <table border="1">
+                <tr><th>Location data</th><td id="location"></td></tr>
+                <tr><th>Navigator data</th><td id="navigator"></td></tr>
+                <tr><th>Cookie Data </th><td id="cookies"></td> </tr>
+            </table>
+        <div>
+    </body>
+</html>
