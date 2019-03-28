@@ -1,2 +1,3 @@
 #!/bin/bash
-docker build -t express-tests .
+name="${PWD##*/}"
+docker build -t "$name" .

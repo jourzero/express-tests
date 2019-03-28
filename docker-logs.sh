@@ -1,2 +1,3 @@
 #!/bin/sh
-docker logs -f
+name="${PWD##*/}"
+docker logs -f "$name"

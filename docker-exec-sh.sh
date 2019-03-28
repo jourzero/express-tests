@@ -1,2 +1,3 @@
 #!/bin/bash
-docker exec -it express-tests /bin/sh
+name="${PWD##*/}"
+docker exec -it "$name" /bin/bash
