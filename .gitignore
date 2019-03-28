@@ -62,8 +62,6 @@ typings/
 
 # My additions
 old
-docker-run.sh
-docker-stop.sh
 express.sh
 Initial.md
 package-lock.json
