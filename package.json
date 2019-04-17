@@ -5,47 +5,14 @@
       "scripts": {
             "start": "node ./bin/www"
       },
-      "eslintConfig": {
-            "parserOptions": {
-                  "ecmaVersion": 2017,
-                  "sourceType": "module"
-            },
-            "env": {
-                  "node": true,
-                  "es6": true
-            },
-            "extends": [
-                  "eslint:recommended"
-            ],
-            "rules": {
-                  "no-console": "off",
-                  "no-var": "error",
-                  "prefer-const": "error"
-            }
-      },
-      "eslintIgnore": [
-            "**/out/*.js"
-      ],
-      "prettier": {
-            "tabWidth": 4,
-            "printWidth": 75
-      },
       "dependencies": {
             "app-root-path": "^2.1.0",
             "cookie-parser": "~1.4.3",
             "debug": "~2.6.9",
             "express": "~4.16.0",
-            "hbs": "~4.0.1",
+            "hbs": "^4.0.2",
             "http-errors": "~1.6.2",
             "morgan": "~1.9.0",
-            "winston": "^3.1.0",
-            "winston-syslog": "^2.1.0"
-      },
-      "devDependencies": {
-            "eslint": "^4.19.0",
-            "eslint-config-recommended": "^2.0.0",
-            "eslint-plugin-flowtype": "^2.50.0",
-            "nodemon": "^1.18.4",
-            "prettier": "^1.14.2"
+            "winston": "^3.1.0"
       }
 }
