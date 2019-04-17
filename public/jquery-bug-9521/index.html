@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Express Static - Index</title>
+        <script>
+            let files = [
+                "./jquery-bug-9521/jquery-bug-9521-test.html",
+                "./jquery-bug-9521/jquery-bug-9521-attack.html",
+                "./jquery-bug-9521/jquery-selector-poc.html"
+            ];
+        </script>
+    </head>
+    <body>
+        <h1>Index</h1>
+        <ul>
+            <script>
+                for (i in files) {
+                    document.writeln(
+                        "<li><a href='" +
+                            files[i] +
+                            "'>" +
+                            files[i] +
+                            "</a></li>"
+                    );
+                }
+            </script>
+        </ul>
+    </body>
+</html>
