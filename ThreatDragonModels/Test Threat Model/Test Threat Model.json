@@ -483,16 +483,42 @@
               "angle": 0,
               "id": "6df62cf2-9893-4852-acf1-34161125c6ea",
               "z": 12,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "ruleId": "4adaa48a-0345-4533-a189-64c98c4420dd",
+                  "title": "Crosstalk",
+                  "type": "Tampering",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Bad multi-threading code causing corruption in messaging"
+                },
+                {
+                  "ruleId": "87bc37e2-798e-4d68-bb96-feb1da26da48",
+                  "title": "Log corruption",
+                  "type": "Repudiation",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Insufficient input validations may cause non-repudiability (corrupted logs)."
+                },
+                {
+                  "ruleId": "13000296-b17d-4b72-9cc4-f5cc33f80e4c",
+                  "title": "Data breach through crosstalk",
+                  "type": "Information disclosure",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Partially mitigated via output validation workaround. We should also make our multi-threading implementation protect itself against cross-tenant crosstalk via better access controls and containment (perhaps have separate processes for each tenant, redesign a few APIs to limit their scope...)."
+                }
+              ],
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasOpenThreats isInScope"
                 },
                 "text": {
                   "text": "Chat Router"
                 },
                 ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
+                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
